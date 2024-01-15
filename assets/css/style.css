@@ -30,14 +30,79 @@ nav {
 
 #question {
     margin: auto;
-    width: 60%;
+    width: 40%;
     font-size: 20px;
 }
 
 #answers {
-    margin: auto;
-    width: 60%;
+    margin:auto;
+    width: 40%;
+    font-size: 20px;
 }
+
+#answer1 {
+    border: 2px solid purple;
+    border-radius: 8px;  
+    box-shadow: 0 0 10px 3px #bc64c8, 0 0 20px 3px #ebecca;
+    padding: 10px 20px;  
+    background-color: white; 
+    color: purple;  
+    margin: 25px;
+}
+
+  #answer1:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+  }
+
+  #answer2 {
+    border: 2px solid purple;
+    border-radius: 8px;  
+    box-shadow: 0 0 10px 5px #bc64c8, 0 0 20px 7px #ebecca;
+    padding: 10px 20px;  
+    background-color: white;  
+    color: purple;  
+    margin: 25px;
+  }
+
+  #answer2:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+  }
+
+  #answer3 {
+    border: 2px solid purple;
+    border-radius: 8px;  
+    box-shadow: 0 0 10px 5px #bc64c8, 0 0 20px 7px #ebecca;
+    padding: 10px 20px;  
+    background-color: white;  
+    color: purple;  
+    margin: 25px;
+  }
+
+  #answer3:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+  }
+
+  #answer4 {
+    border: 2px solid purple;
+    border-radius: 8px;  
+    box-shadow: 0 0 10px 5px #bc64c8, 0 0 20px 7px #ebecca;
+    padding: 10px 20px;  
+    background-color: white;  
+    color: purple;  
+    margin: 25px;
+  }
+
+  #answer4:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+  }
 
 .startscreen {
     margin: auto;

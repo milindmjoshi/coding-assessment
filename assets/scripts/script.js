@@ -31,6 +31,11 @@ var startScreen = document.querySelector(".startscreen");
 var questionScreen = document.querySelector(".questionscreen");
 var question = document.querySelector("#question");
 var answers = document.querySelector("#answers");
+var answer1 = document.querySelector("#answer1");
+var answer2 = document.querySelector("#answer2");
+var answer3 = document.querySelector("#answer3");
+var answer4 = document.querySelector("#answer4");
+
 
 
 var mybutton = document.querySelector(".startbutton");
@@ -59,7 +64,10 @@ function showQuestion(index){
     // Clear existing question
     console.log(index);
     question.innerHTML =  (index+1) + ". " + test[index].question;
-    answers.innerHTML = test[index].answers;
+    answer1.innerHTML = test[index].answers[0];
+    answer2.innerHTML = test[index].answers[1];
+    answer3.innerHTML = test[index].answers[2];
+    answer4.innerHTML = test[index].answers[3];
     //increment to next question
     startQuestion++;
 
