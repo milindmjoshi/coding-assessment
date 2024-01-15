@@ -28,16 +28,28 @@ nav {
     color: purple;
 }
 
-.container {
+#question {
+    margin: auto;
+    width: 60%;
+    font-size: 20px;
+}
+
+#answers {
     margin: auto;
     width: 60%;
 }
-.container h1 {
+
+.startscreen {
+    margin: auto;
+    width: 60%;
+}
+
+.startscreen h1 {
     text-align: center;
     margin-bottom: 50px;
 }
 
-.container p{
+.startscreen p{
     text-align: left;
     font-size: 20px;
     line-height: 1.2;
@@ -54,4 +66,8 @@ nav {
     font-size: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.questionscreen{
+    display: none;
 }
