@@ -34,6 +34,39 @@ nav {
     font-size: 20px;
 }
 
+#highscoresScreen {
+    margin: auto;
+    width: 40%;
+    display: none;
+}
+
+#scores {
+    /* margin: 10px; */
+    width: 200px;
+    background-color: lavender;
+    height: fit-content;
+}
+
+#scores p{
+    padding: 5px;
+}
+
+#testcomplete {
+    margin: auto;
+    width: 40%;
+    display: none;
+}
+
+#testcomplete input {
+    padding: 5px;
+}
+
+#correct {
+    margin:auto;
+    width: 40%;
+    font-size: 20px;
+}
+
 #answers {
     margin:auto;
     width: 40%;
@@ -104,6 +137,14 @@ nav {
     color: white;
   }
 
+  #correct {
+    /* border: 2px solid purple; */
+    color: green;
+    background-color: white;
+    margin-top: 10px;
+    display: none;
+  }
+
 .startscreen {
     margin: auto;
     width: 60%;
@@ -132,6 +173,67 @@ nav {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+.startbutton:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+  }
+
+.submitbutton {
+    border-radius: 8px;
+    background-color: purple;
+    color: whitesmoke;
+    margin: auto;
+    width:fit-content;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    display:inline;
+}
+
+.submitbutton:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+  }
+
+  .backbutton {
+    border-radius: 8px;
+    background-color: purple;
+    color: whitesmoke;
+    margin: auto;
+    width:fit-content;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    display:inline;
+}
+
+.backbutton:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+  }
+
+
+  .clearbutton {
+    border-radius: 8px;
+    background-color: purple;
+    color: whitesmoke;
+    margin: auto;
+    width:fit-content;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    display:inline;
+}
+
+.clearbutton:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+  }
 
 .questionscreen{
     display: none;

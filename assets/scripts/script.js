@@ -12,10 +12,15 @@ var testQuestion2 = {
 var testQuestion3 = {
     question: "Which method can be used to merge an Array to another Array?",
     answers: ["join","map","concat","flat"],
-    answerIndex: 3
+    answerIndex: 2
 }
 
-var startQuestion = 0;
+var score = 0;
+
+var highscores = [];
+
+// start current question at index 0
+var currentQuestion = 0;
 
 var test = [testQuestion1, testQuestion2, testQuestion3];
 
@@ -35,42 +40,147 @@ var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
+var correct = document.querySelector("#iscorrect");
+var testcomplete = document.querySelector("#testcomplete");
+var finalscore = document.querySelector("#finalscore");
+var startbutton = document.querySelector(".startbutton");
+var submitbutton = document.querySelector(".submitbutton");
+var backbutton = document.querySelector(".backbutton");
+var clearbutton = document.querySelector(".clearbutton");
+var userinitial = document.querySelector("#userinitial");
+var highscoresScreen = document.querySelector("#highscoresScreen");
+var scores = document.querySelector("#scores");
+console.log("final score element: "+ finalscore);
+
+function clearMessage(){
+    console.log("Clear Message");
+    correct.style.display = "none";
+}
+
+function showMessage(message){
+    console.log("show message: " + message);
+    correct.innerHTML = message;
+    correct.style.display = "block";
+}
+
+function showHighScores(){
+    questionScreen.style.display = "none";
+    startScreen.style.display = "none";
+    testcomplete.style.display = "none";
+    var scoreString = "";
+    console.log(highscores);
+    highscores.forEach(function(userscore){
+        console.log(userscore);
+        scoreString += "<p>" + userscore ;
+    });
+    console.log(scoreString);
+    scores.innerHTML = scoreString;
+    highscoresScreen.style.display = "block";
+}
+
+function showStartScreen(){
+    questionScreen.style.display = "none";
+    startScreen.style.display = "block";
+    testcomplete.style.display = "none";
+    highscoresScreen.style.display = "none";
+    //reset currentQuestion and score when start screen is displayed
+    currentQuestion = 0;
+    score = 0;
+}
 
 
 
-var mybutton = document.querySelector(".startbutton");
-mybutton.addEventListener("click",function(){
-    alert("button clicked");
+startbutton.addEventListener("click",function(){
+    console.log("start button clicked");
     startScreen.style.display = "none";
     questionScreen.style.display = "block";
-    showQuestion(startQuestion);
+    showQuestion(currentQuestion);
 });
 
-answers.addEventListener("click",function(){
-    alert("question answered");
-    console.log("Test length: " + test.length);
-    console.log("Question index: " + startQuestion);
-    if ((startQuestion) < test.length)
-    {
-        showQuestion(startQuestion);
+submitbutton.addEventListener("click",function(){
+    console.log("submit button clicked");
+    console.log(userinitial.value)
+    highscores.push(userinitial.value + " - " + score);
+    userinitial.value = "";
+    showHighScores();
+});
+
+backbutton.addEventListener("click",function(){
+    console.log("back button clicked");
+    showStartScreen();
+});
+
+clearbutton.addEventListener("click",function(){
+    console.log("clear button clicked");
+    highscores = [];
+    showHighScores();
+});
+
+
+ 
+
+/* Called when question answer is selected */
+var answered = function (event){
+    // alert("question answered");
+    event.stopPropagation();
+    console.log("question answered");
+    var answerIndex = event.target.getAttribute("index");
+    console.log("answer index: " + answerIndex);
+    if (answerIndex == test[currentQuestion].answerIndex){
+        console.log("Correct");
+        score++;
+        showMessage("Correct");
+        
     }
     else{
-        alert("Test Complete");
+        console.log("Incorrect");
+       showMessage("Incorrect");
+        
     }
+    setTimeout(clearMessage,2000); //clear message after 2 seconds
+    // show next question
+    showQuestion(++currentQuestion);
+
+}
+answer1.addEventListener("click",answered);
+answer2.addEventListener("click",answered);
+answer3.addEventListener("click",answered);
+answer4.addEventListener("click",answered);
+
+
+
+// answers.addEventListener("click",function(){
+//     // alert("question answered");
+//     console.log("Test length: " + test.length);
+//     console.log("Question index: " + nextQuestion);
+//     if ((nextQuestion) < test.length)
+//     {
+//         showQuestion(nextQuestion);
+//     }
+//     else{
+//         alert("Test Complete");
+//     }
      
-});
+// });
 
 function showQuestion(index){
-    // Clear existing question
-    console.log(index);
-    question.innerHTML =  (index+1) + ". " + test[index].question;
-    answer1.innerHTML = test[index].answers[0];
-    answer2.innerHTML = test[index].answers[1];
-    answer3.innerHTML = test[index].answers[2];
-    answer4.innerHTML = test[index].answers[3];
-    //increment to next question
-    startQuestion++;
+    console.log("show question index " + index);
+    if (index < test.length){
+        question.innerHTML =  (index+1) + ". " + test[index].question;
+        answer1.innerHTML = test[index].answers[0];
+        answer2.innerHTML = test[index].answers[1];
+        answer3.innerHTML = test[index].answers[2];
+        answer4.innerHTML = test[index].answers[3];
+    }
+    else{
+        // At end of test. Show final score
+        testcomplete.style.display = "block";
+        questionScreen.style.display = "none";
+        finalscore.innerHTML = "Your final score is " + score;
 
+
+    }
+     
 
 }
 
@@ -94,5 +204,5 @@ var startTimer =
 }
 
 startTestTimer();
-
+ 
  
