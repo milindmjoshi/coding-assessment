@@ -31,6 +31,7 @@ var mytimer = document.querySelector("#countdown-timer");
 var timerValue = 10;
 console.log(mytimer);
 mytimer.innerHTML = timerValue;
+mytimer.style.display = "none";
 
 var startScreen = document.querySelector(".startscreen");
 var questionScreen = document.querySelector(".questionscreen");
@@ -50,6 +51,7 @@ var clearbutton = document.querySelector(".clearbutton");
 var userinitial = document.querySelector("#userinitial");
 var highscoresScreen = document.querySelector("#highscoresScreen");
 var scores = document.querySelector("#scores");
+var highScoresLink = document.querySelector(".highscores");
 console.log("final score element: "+ finalscore);
 
 function clearMessage(){
@@ -61,6 +63,14 @@ function showMessage(message){
     console.log("show message: " + message);
     correct.innerHTML = message;
     correct.style.display = "block";
+}
+
+function showFinalScore(){
+    testcomplete.style.display = "block";
+    questionScreen.style.display = "none";
+    startScreen.style.display = "none";
+    finalscore.innerHTML = "Your final score is " + score;
+
 }
 
 function showHighScores(){
@@ -88,13 +98,19 @@ function showStartScreen(){
     score = 0;
 }
 
-
+highScoresLink.addEventListener("click",function(){
+    showHighScores();
+});
 
 startbutton.addEventListener("click",function(){
     console.log("start button clicked");
     startScreen.style.display = "none";
     questionScreen.style.display = "block";
     showQuestion(currentQuestion);
+    timerValue = 10;
+    mytimer.style.display = "block";
+    mytimer.innerHTML = timerValue;
+    startTestTimer();
 });
 
 submitbutton.addEventListener("click",function(){
@@ -128,12 +144,16 @@ var answered = function (event){
     console.log("answer index: " + answerIndex);
     if (answerIndex == test[currentQuestion].answerIndex){
         console.log("Correct");
+        correct.style.color = "green";
         score++;
         showMessage("Correct");
         
     }
     else{
         console.log("Incorrect");
+        correct.style.color = "red";
+        // reduce time by 3 seconds on incorrect answer
+        timerValue -= 3;
        showMessage("Incorrect");
         
     }
@@ -147,22 +167,6 @@ answer2.addEventListener("click",answered);
 answer3.addEventListener("click",answered);
 answer4.addEventListener("click",answered);
 
-
-
-// answers.addEventListener("click",function(){
-//     // alert("question answered");
-//     console.log("Test length: " + test.length);
-//     console.log("Question index: " + nextQuestion);
-//     if ((nextQuestion) < test.length)
-//     {
-//         showQuestion(nextQuestion);
-//     }
-//     else{
-//         alert("Test Complete");
-//     }
-     
-// });
-
 function showQuestion(index){
     console.log("show question index " + index);
     if (index < test.length){
@@ -174,35 +178,38 @@ function showQuestion(index){
     }
     else{
         // At end of test. Show final score
-        testcomplete.style.display = "block";
-        questionScreen.style.display = "none";
-        finalscore.innerHTML = "Your final score is " + score;
-
+        showFinalScore();
 
     }
      
 
 }
 
+var startTimer;
+
+function stopTimer(){
+    console.log("stop timer: " + startTimer);
+    if (startTimer != undefined){
+        clearInterval(startTimer);
+        console.log("hide timer");
+        //Either way works below to hide timer
+        //mytimer.style.display = "none";
+        mytimer.setAttribute("style","display:none");
+    }
+}
+
 function startTestTimer(){
-var startTimer = 
-    setInterval(function(){
+     startTimer = setInterval(function(){
         if (timerValue >0){
             timerValue--;
             mytimer.innerHTML = timerValue;
         }
         else{
-            clearInterval(startTimer);
-            console.log("hide timer");
-            //Either way works below to hide timer
-            //mytimer.style.display = "none";
-            mytimer.setAttribute("style","display:none");
+            stopTimer();
+            showFinalScore();
         }
 
     },
     1000);
 }
-
-startTestTimer();
- 
  
