@@ -8,55 +8,68 @@
     <link rel="stylesheet" href="./assets/css/style.css"/>
 </head>
 <body>
+    <!-- header with nav -->
     <header>
+        <!-- nav contains high scores link and countdown timer -->
         <nav>
             <div class="highscores">View High Scores</div>
             <div id="countdown-timer"></div>
         </nav>
     </header>
     <main>
-        <div class="startscreen">
-            <h1>JavaScript Coding Assessment</h1>
-            <p>Click start to begin the coding challenge. You will have 60 seconds to answer 10 questions in 
-                JavaScript. For each wrong answer, 5 seconds will be decremented from the timer. At the end of the 
-                quiz, your score will be displayed.
-            </p>
-            <br/>
-            <p>Good Luck!</p>
-            <br>
-            <div class="startbutton">Start</div>
-        </div>
-        <div class="questionscreen">
-            <div id="question"> </div>
-            <br>
-            <div id="answers">
-                <div id="answer1" index="0"></div>
-                <div id="answer2" index="1"></div>
-                <div id="answer3" index="2"></div>
-                <div id="answer4" index="3"></div>
-                <div id="iscorrect"></div>
+        <section>
+            <!-- start screen with start button -->
+            <div class="startscreen">
+                <h1>JavaScript Coding Assessment</h1>
+                <p>Click start to begin the coding challenge. You will have 60 seconds to answer 10 questions in 
+                    JavaScript. For each wrong answer, 5 seconds will be decremented from the timer. At the end of the 
+                    quiz, your score will be displayed.
+                </p>
+                <br/>
+                <p>Good Luck!</p>
+                <br>
+                <div class="startbutton">Start</div>
             </div>
-        </div>
-        <div id="testcomplete">
-            <h1>Test Complete!</h1>
-            <br>
-            <h2 id="finalscore"></h2>
-            <br>
-            <label>Enter initials: </label>
-            <input type="text" maxlength="10" id="userinitial"/>
-            
-            <div class="submitbutton">Submit</div>
-        </div>
-        <div id="highscoresScreen">
-            <h1>High Scores</h1>
-            <br>
-            <div id="scores"></div>
-            <br>
-            <br>
-            <div class="backbutton">Go Back</div>
-            <div class="clearbutton">Clear High Scores</div>
-        </div>
-        
+        </section>
+        <section> 
+            <!-- question screen with answers -->
+            <div class="questionscreen">
+                <div id="question"> </div>
+                <br>
+                <div id="answers">
+                    <div id="answer1" index="0"></div>
+                    <div id="answer2" index="1"></div>
+                    <div id="answer3" index="2"></div>
+                    <div id="answer4" index="3"></div>
+                    <div id="iscorrect"></div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <!-- test complete screen with final score -->
+            <div id="testcomplete">
+                <h1>Test Complete!</h1>
+                <br>
+                <h2 id="finalscore"></h2>
+                <br>
+                <label>Enter initials: </label>
+                <input type="text" maxlength="10" id="userinitial"/>
+                
+                <div class="submitbutton">Submit</div>
+            </div>
+        </section>
+        <section>
+            <!-- high scores screen -->
+            <div id="highscoresScreen">
+                <h1>High Scores</h1>
+                <br>
+                <div id="scores"></div>
+                <br>
+                <br>
+                <div class="backbutton">Go Back</div>
+                <div class="clearbutton">Clear High Scores</div>
+            </div>
+        <section>
     </main>
     <script src="./assets/scripts/script.js"></script>  
 </body>
