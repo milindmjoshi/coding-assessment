@@ -21,7 +21,7 @@ var highScoresLink = document.querySelector(".highscores");
 var mytimer = document.querySelector("#countdown-timer");
 
 
-//test questions
+//test question objects
 var testQuestion1 = {
     question: "What does JS stand for?",
     answers: ["Junior School","JavaScript","Java School","It doesn't stand for anything"],
@@ -37,8 +37,44 @@ var testQuestion3 = {
     answers: ["join","map","concat","flat"],
     answerIndex: 2
 }
-// test array is composed of test questions
-var test = [testQuestion1, testQuestion2, testQuestion3];
+var testQuestion4 = {
+    question: "Which of the follow is not a Javascript arithmetic operator?",
+    answers: ["+","*","~","-"],
+    answerIndex: 2
+}
+var testQuestion5 = {
+    question: "Which of the following is not a JavaScript logical operator?",
+    answers: ["&&","!","||","--"],
+    answerIndex: 3
+}
+var testQuestion6 = {
+    question: "Which of the following is model of how the browser represents a web page internally?",
+    answers: ["FOL","DOM","SDOM","ISAM"],
+    answerIndex: 1
+}
+var testQuestion7 = {
+    question: "Which of the following is not a native JavaScript Object?",
+    answers: ["Math","Array","Date","Integer"],
+    answerIndex: 3
+}
+var testQuestion8 = {
+    question: "Which of the following is not a primitive in JavaScript?",
+    answers: ["float","string","number","boolean"],
+    answerIndex: 0
+}
+var testQuestion9 = {
+    question: "How do you declare a block scoped variable in JavaScript ",
+    answers: ["let","var","variable","get"],
+    answerIndex: 0
+}
+var testQuestion10 = {
+    question: "Which object does console.log belong to in JavaScript?",
+    answers: ["DOM","window","page","link"],
+    answerIndex: 1
+}
+
+// test array is composed of test question objects
+var test = [testQuestion1, testQuestion2, testQuestion3, testQuestion4,testQuestion5,testQuestion6,testQuestion7,testQuestion8,testQuestion9,testQuestion10];
 
 // variable for keeping score
 var score = 0;
@@ -50,7 +86,7 @@ var highscores = [];
 var currentQuestion = 0;
 
 // timer for test in seconds
-var timerValue = 10;
+var timerValue = 60;
 
 // variable for start timer function
 var startTimer;
@@ -79,6 +115,8 @@ function showFinalScore(){
 
 // Show high scores screen
 function showHighScores(){
+    //stop timer if it is running, user could have clicked while in test
+    stopTimer();
     questionScreen.style.display = "none";
     startScreen.style.display = "none";
     testcomplete.style.display = "none";
@@ -115,8 +153,9 @@ startbutton.addEventListener("click",function(){
     startScreen.style.display = "none";
     questionScreen.style.display = "block";
     showQuestion(currentQuestion);
-    timerValue = 10;
     mytimer.style.display = "block";
+    //rest timer value to 60
+    timerValue = 60;
     mytimer.innerHTML = timerValue;
     startTestTimer();
 });
@@ -167,8 +206,8 @@ var answered = function (event){
     else{
         console.log("Incorrect");
         correct.style.color = "red";
-        // reduce time by 3 seconds on incorrect answer
-        timerValue -= 3;
+        // reduce time by 5 seconds on incorrect answer
+        timerValue -= 5;
        showMessage("Incorrect");
         
     }
