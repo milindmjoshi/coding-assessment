@@ -1,3 +1,16 @@
+:root {
+    --answerbuttonColor:  purple;
+    --answerbuttonShadow:  #bc64c8;
+    --answerbuttonShadow2: #ebecca;;
+    --answerbuttonBorder: purple;
+    --answerButtonBgColor: white;
+    --answerbuttonHoverBgColor: purple;
+    --answerbuttonHoverColor: white;
+    --correctColor: green;
+    --highScoresColor: purple;
+    --timerColor: red;
+}
+
 /* Set nav height and width */
 nav {
     width: 100%;
@@ -7,7 +20,7 @@ nav {
 
 /* Styling for countdown timer */
 #countdown-timer {
-    color: red;
+    color: var(--timerColor);
     /* background-color: black; */
     font-size: 20px;
     /* width: 5%; */
@@ -24,24 +37,26 @@ nav {
     float: left;
     font-size: 20px;
     margin-left: 10px;
-    color: purple;
+    color: var(--highScoresColor);
     cursor: pointer;
 
 }
 
-
+/* Styling for test question */
 #question {
     margin: auto;
     width: 40%;
     font-size: 20px;
 }
 
+/* Styling for high scores screen */
 #highscoresScreen {
     margin: auto;
     width: 40%;
     display: none;
 }
 
+/* styling for scores table in high scores screen */
 #scores {
     /* margin: 10px; */
     width: 200px;
@@ -49,10 +64,13 @@ nav {
     height: fit-content;
 }
 
+/* add padding for scores*/
 #scores p{
     padding: 5px;
 }
 
+
+/* test complete section styling */
 #testcomplete {
     margin: auto;
     width: 40%;
@@ -69,6 +87,8 @@ nav {
     font-size: 20px;
 }
 
+/* answers section styling */
+
 #answers {
     margin:auto;
     width: 40%;
@@ -76,77 +96,79 @@ nav {
 }
 
 #answer1 {
-    border: 2px solid purple;
+    border: 2px solid var(--answerbuttonColor);
     border-radius: 8px;  
-    box-shadow: 0 0 10px 3px #bc64c8, 0 0 20px 3px #ebecca;
+    box-shadow: 0 0 10px 3px var(--answerbuttonShadow), 0 0 20px 3px var(--answerbuttonShadow2);
     padding: 10px 20px;  
-    background-color: white; 
-    color: purple;  
+    background-color: var(--answerButtonBgColor); 
+    color: var(--answerbuttonColor);  
     margin: 25px;
 }
 
   #answer1:hover {
     cursor: pointer;
-    background-color: purple;
-    color: white;
+    background-color: var(--answerbuttonHoverBgColor);
+    color: var(--answerbuttonHoverColor);
   }
 
   #answer2 {
-    border: 2px solid purple;
+    border: 2px solid var(--answerbuttonBorder);
     border-radius: 8px;  
-    box-shadow: 0 0 10px 5px #bc64c8, 0 0 20px 7px #ebecca;
+    box-shadow: 0 0 10px 5px var(--answerbuttonShadow), 0 0 20px 7px var(--answerbuttonShadow2);
     padding: 10px 20px;  
-    background-color: white;  
-    color: purple;  
+    background-color: var(--answerButtonBgColor); 
+    color: var(--answerbuttonColor); 
     margin: 25px;
   }
 
   #answer2:hover {
     cursor: pointer;
-    background-color: purple;
-    color: white;
+    background-color: var(--answerbuttonHoverBgColor);
+    color: var(--answerbuttonHoverColor);
   }
 
   #answer3 {
-    border: 2px solid purple;
+    border: 2px solid var(--answerbuttonBorder);
     border-radius: 8px;  
-    box-shadow: 0 0 10px 5px #bc64c8, 0 0 20px 7px #ebecca;
+    box-shadow: 0 0 10px 5px var(--answerbuttonShadow), 0 0 20px 7px var(--answerbuttonShadow2);
     padding: 10px 20px;  
-    background-color: white;  
-    color: purple;  
+    background-color: var(--answerButtonBgColor); 
+    color: var(--answerbuttonColor); 
     margin: 25px;
   }
 
   #answer3:hover {
     cursor: pointer;
-    background-color: purple;
-    color: white;
+    background-color: var(--answerbuttonHoverBgColor);
+    color: var(--answerbuttonHoverColor);
   }
 
   #answer4 {
-    border: 2px solid purple;
+    border: 2px solid var(--answerbuttonBorder);
     border-radius: 8px;  
-    box-shadow: 0 0 10px 5px #bc64c8, 0 0 20px 7px #ebecca;
+    box-shadow: 0 0 10px 5px var(--answerbuttonShadow), 0 0 20px 7px var(--answerbuttonShadow2);
     padding: 10px 20px;  
-    background-color: white;  
-    color: purple;  
+    background-color: var(--answerButtonBgColor); 
+    color: var(--answerbuttonColor); 
     margin: 25px;
   }
 
   #answer4:hover {
     cursor: pointer;
-    background-color: purple;
-    color: white;
+    background-color: var(--answerbuttonHoverBgColor);
+    color: var(--answerbuttonHoverColor);
   }
 
   #correct {
     /* border: 2px solid purple; */
-    color: green;
+    color: var(--correctColor);
     background-color: white;
     margin-top: 10px;
     display: none;
   }
 
+
+/* Start screen styling */
 .startscreen {
     margin: auto;
     width: 60%;
@@ -164,6 +186,7 @@ nav {
     /* width: 50%; */
 }
 
+/* Start button styling for submitting user initials and high score*/
 .startbutton {
     border-radius: 8px;
     background-color: purple;
@@ -182,6 +205,7 @@ nav {
     color: white;
   }
 
+  /* Submit button styling for submitting user initials and high score*/
 .submitbutton {
     border-radius: 8px;
     background-color: purple;
@@ -200,6 +224,7 @@ nav {
     color: white;
   }
 
+  /* Back button styling for going back to start of application*/
   .backbutton {
     border-radius: 8px;
     background-color: purple;
@@ -219,6 +244,7 @@ nav {
   }
 
 
+  /* Clear button styling for clearing high scores */
   .clearbutton {
     border-radius: 8px;
     background-color: purple;
@@ -237,6 +263,7 @@ nav {
     color: white;
   }
 
+  /* Hide question screen by default. It will be displayed when test is started */
 .questionscreen{
     display: none;
 }

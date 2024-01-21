@@ -100,8 +100,9 @@ function clearMessage(){
 // shows correct or incorrect message
 function showMessage(message){
     console.log("show message: " + message);
-    correct.innerHTML = message;
     correct.style.display = "block";
+    correct.innerHTML = message;
+   
 }
 
 // shows final score scre
@@ -216,6 +217,7 @@ var answered = function (event){
     }
     else{
         console.log("Incorrect");
+        //set color to red on incorrect answer
         correct.style.color = "red";
         // reduce time by 5 seconds on incorrect answer
         timerValue -= 5;
