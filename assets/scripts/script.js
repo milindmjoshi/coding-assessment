@@ -24,52 +24,52 @@ var mytimer = document.querySelector("#countdown-timer");
 //test question objects
 var testQuestion1 = {
     question: "What does JS stand for?",
-    answers: ["Junior School","JavaScript","Java School","It doesn't stand for anything"],
+    answers: ["1. Junior School","2. JavaScript","3. Java School","4. It doesn't stand for anything"],
     answerIndex: 1
 }
 var testQuestion2 = {
     question: "How do you declare a variable in JS",
-    answers: ["var","variable","let","Both var and let"],
+    answers: ["1. var","2. variable","3. let","4. Both var and let"],
     answerIndex: 3
 }
 var testQuestion3 = {
     question: "Which method can be used to merge an Array to another Array?",
-    answers: ["join","map","concat","flat"],
+    answers: ["1. join","2. map","3. concat","4. flat"],
     answerIndex: 2
 }
 var testQuestion4 = {
     question: "Which of the follow is not a Javascript arithmetic operator?",
-    answers: ["+","*","~","-"],
+    answers: ["1. +","2. *","3. ~","4. -"],
     answerIndex: 2
 }
 var testQuestion5 = {
     question: "Which of the following is not a JavaScript logical operator?",
-    answers: ["&&","!","||","--"],
+    answers: ["1. &&","2. !","3. ||","4. --"],
     answerIndex: 3
 }
 var testQuestion6 = {
-    question: "Which of the following is model of how the browser represents a web page internally?",
-    answers: ["FOL","DOM","SDOM","ISAM"],
+    question: "Which of the following is a model of how the browser represents a web page internally?",
+    answers: ["1. FOL","2. DOM","3. SDOM","4. ISAM"],
     answerIndex: 1
 }
 var testQuestion7 = {
     question: "Which of the following is not a native JavaScript Object?",
-    answers: ["Math","Array","Date","Integer"],
+    answers: ["1. Math","2. Array","3. Date","4. Integer"],
     answerIndex: 3
 }
 var testQuestion8 = {
     question: "Which of the following is not a primitive in JavaScript?",
-    answers: ["float","string","number","boolean"],
+    answers: ["1. float","2. string","3. number","4. boolean"],
     answerIndex: 0
 }
 var testQuestion9 = {
     question: "How do you declare a block scoped variable in JavaScript ",
-    answers: ["let","var","variable","get"],
+    answers: ["1. let","2. var","3. variable","4. get"],
     answerIndex: 0
 }
 var testQuestion10 = {
     question: "Which object does console.log belong to in JavaScript?",
-    answers: ["DOM","window","page","link"],
+    answers: ["1. DOM","2. window","3. page","4. link"],
     answerIndex: 1
 }
 
@@ -109,7 +109,14 @@ function showFinalScore(){
     testcomplete.style.display = "block";
     questionScreen.style.display = "none";
     startScreen.style.display = "none";
-    finalscore.innerHTML = "Your final score is " + score;
+    var message = "Your final score is " + score;
+    if (score === 10){
+        message += ". Great Job!"
+    }
+    else if (score <=3){
+        message += ". You can do better than that. Study some more. "
+    }
+    finalscore.innerHTML = message;
 
 }
 
@@ -122,9 +129,9 @@ function showHighScores(){
     testcomplete.style.display = "none";
     var scoreString = "";
     console.log(highscores);
-    highscores.forEach(function(userscore){
+    highscores.forEach(function(userscore, index){
         console.log(userscore);
-        scoreString += "<p>" + userscore ;
+        scoreString += "<p>" + (index +1) + ". " + userscore ;
     });
     console.log(scoreString);
     scores.innerHTML = scoreString;
@@ -156,7 +163,7 @@ startbutton.addEventListener("click",function(){
     mytimer.style.display = "block";
     //rest timer value to 60
     timerValue = 60;
-    mytimer.innerHTML = timerValue;
+    mytimer.innerHTML = "Timer: " + timerValue;
     startTestTimer();
 });
 
@@ -166,6 +173,10 @@ submitbutton.addEventListener("click",function(){
     console.log(userinitial.value)
     // Don't do anything if nothing entered
     if (userinitial.value == "" || userinitial.value.trim() == ""){
+        alert("Initials cannot be blank, please enter user initials. Max length is 10.");
+        // move cursor back to beginning of input
+        userinitial.setSelectionRange(0, 0);
+        userinitial.focus();
         return;
     }
     highscores.push(userinitial.value.toUpperCase() + " - " + score);
@@ -261,8 +272,9 @@ function startTestTimer(){
      startTimer = setInterval(function(){
         if (timerValue >0){
             timerValue--;
-            mytimer.innerHTML = timerValue;
+            mytimer.innerHTML = "Timer: " + timerValue;
         }
+        // stop timer when timer reaches zero and show final score
         else{
             stopTimer();
             showFinalScore();
