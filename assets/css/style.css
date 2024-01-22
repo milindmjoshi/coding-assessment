@@ -268,8 +268,7 @@ nav {
     display: none;
 }
 
-/* reduce font size on submit button and password text for smaller screens */
-
+/* reduce font size on buttons for smaller screens */
 @media (max-width: 700px) {
   /* uncomment below when testing screen sizes*/
   /* nav {
@@ -312,7 +311,5 @@ nav {
     margin:auto;
     width: 80%;
     font-size: 15px;
-}
-
-   
+  }
 }
