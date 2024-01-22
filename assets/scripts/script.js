@@ -110,7 +110,7 @@ function showFinalScore(){
     testcomplete.style.display = "block";
     questionScreen.style.display = "none";
     startScreen.style.display = "none";
-    var message = "Your final score is " + score;
+    var message = "Your final score is " + score + " out of 10";
     if (score === 10){
         message += ". Great Job!"
     }
